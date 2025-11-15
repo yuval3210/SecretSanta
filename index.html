@@ -470,7 +470,9 @@
         // Load data from JSON file
         async function loadData() {
             try {
-                const response = await fetch('data.json');
+                // Add timestamp to prevent caching
+                const cacheBuster = new Date().getTime();
+                const response = await fetch(`data.json?v=${cacheBuster}`);
                 const data = await response.json();
                 
                 participantIds = data.participants;
