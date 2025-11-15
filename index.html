@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="theme-color" content="#1a0a2e">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>✨ Secret Santa Extravaganza ✨</title>
+    <title>✨ Secret Santa Extravaganza ✨ v2</title>
     
     <style>
         * {
@@ -461,28 +464,53 @@
     </div>
 
     <script>
-        // Data loaded from file
+        // Data embedded directly (update this when you want to change assignments)
+        const secretSantaData = {
+            "participants": {
+                "8164": "Yuval",
+                "3729": "Ofek",
+                "5841": "Omri",
+                "2017": "Ella",
+                "9453": "Idan T",
+                "6280": "Rotem",
+                "1596": "Furmi",
+                "4738": "Ronen",
+                "7902": "Zohar",
+                "3514": "Inbar",
+                "6847": "Ron"
+            },
+            "assignments": {
+                "8164": "2017",
+                "3729": "5841",
+                "5841": "6280",
+                "2017": "9453",
+                "9453": "1596",
+                "6280": "4738",
+                "1596": "3514",
+                "4738": "7902",
+                "7902": "6847",
+                "3514": "3729",
+                "6847": "8164"
+            }
+        };
+
+        // Data loaded from embedded object
         let participantIds = {};
         let idToName = {};
         let assignments = {};
         let participantNames = [];
 
-        // Load data from JSON file
-        async function loadData() {
+        // Load data from embedded object
+        function loadData() {
             try {
-                // Add timestamp to prevent caching
-                const cacheBuster = new Date().getTime();
-                const response = await fetch(`data1.json?v=${cacheBuster}`);
-                const data = await response.json();
-                
-                participantIds = data.participants;
-                idToName = data.participants;
+                participantIds = secretSantaData.participants;
+                idToName = secretSantaData.participants;
                 
                 // Decode assignments
                 assignments = {};
-                for (let giverId in data.assignments) {
+                for (let giverId in secretSantaData.assignments) {
                     const giverName = participantIds[giverId];
-                    const receiverId = data.assignments[giverId];
+                    const receiverId = secretSantaData.assignments[giverId];
                     const receiverName = participantIds[receiverId];
                     assignments[giverName] = receiverName;
                 }
@@ -491,7 +519,7 @@
                 updateParticipantDropdown();
             } catch (error) {
                 console.error('Error loading data:', error);
-                alert('⚠️ Could not load Secret Santa data. Make sure data1.json is in the same folder!');
+                alert('⚠️ Could not load Secret Santa data!');
             }
         }
 
