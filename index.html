@@ -472,7 +472,7 @@
             try {
                 // Add timestamp to prevent caching
                 const cacheBuster = new Date().getTime();
-                const response = await fetch(`data.json?v=${cacheBuster}`);
+                const response = await fetch(`data1.json?v=${cacheBuster}`);
                 const data = await response.json();
                 
                 participantIds = data.participants;
@@ -491,7 +491,7 @@
                 updateParticipantDropdown();
             } catch (error) {
                 console.error('Error loading data:', error);
-                alert('⚠️ Could not load Secret Santa data. Make sure data.json is in the same folder!');
+                alert('⚠️ Could not load Secret Santa data. Make sure data1.json is in the same folder!');
             }
         }
 
