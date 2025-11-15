@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a0a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>✨ Secret Santa Extravaganza ✨</title>
     <style>
         * {
@@ -11,14 +14,27 @@
             padding: 0;
             box-sizing: border-box;
         }
+    html {
+        height: 100%;
+    }
 
-```
     body {
         font-family: 'Georgia', serif;
         background: linear-gradient(135deg, #1a0a2e 0%, #0f3460 50%, #16213e 100%);
-        min-height: 100vh;
+        background-attachment: fixed;
+        min-height: 100%;
+        height: auto;
         overflow-x: hidden;
         position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Fallback for mobile Safari */
+    @supports (-webkit-touch-callout: none) {
+        body {
+            min-height: -webkit-fill-available;
+        }
     }
 
     .snowflake {
@@ -693,7 +709,6 @@
     createSnowflakes();
     updateParticipantDropdown();
 </script>
-```
 
 </body>
 </html>
