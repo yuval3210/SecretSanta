@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,707 +7,582 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>✨ Secret Santa Extravaganza ✨</title>
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-    html {
-        height: 100%;
-    }
 
-    body {
-        font-family: 'Georgia', serif;
-        background: linear-gradient(135deg, #1a0a2e 0%, #0f3460 50%, #16213e 100%);
-        background-attachment: fixed;
-        min-height: 100%;
-        height: auto;
-        overflow-x: hidden;
-        position: relative;
-        margin: 0;
-        padding: 0;
-    }
+        html {
+            height: 100%;
+        }
 
-    /* Fallback for mobile Safari */
-    @supports (-webkit-touch-callout: none) {
         body {
-            min-height: -webkit-fill-available;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f3460 50%, #16213e 100%);
+            background-attachment: fixed;
+            min-height: 100%;
+            height: auto;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
         }
-    }
 
-    .snowflake {
-        position: fixed;
-        top: -10px;
-        color: white;
-        font-size: 1em;
-        opacity: 0.8;
-        animation: fall linear infinite;
-        z-index: 1;
-    }
-
-    @keyframes fall {
-        to {
-            transform: translateY(100vh) rotate(360deg);
+        /* Fallback for mobile Safari */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                min-height: -webkit-fill-available;
+            }
         }
-    }
 
-    .container {
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 20px;
-        position: relative;
-        z-index: 10;
-    }
-
-    .header {
-        text-align: center;
-        padding: 40px 20px;
-        animation: fadeInDown 1s ease-out;
-    }
-
-    .header h1 {
-        font-size: 2.5em;
-        background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #ffd700);
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradient 3s ease infinite, glow 2s ease-in-out infinite;
-        text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        margin-bottom: 10px;
-    }
-
-    .header p {
-        color: #ffd700;
-        font-size: 1.2em;
-        font-style: italic;
-    }
-
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    @keyframes glow {
-        0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
-        50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
-    }
-
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-50px);
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
         }
-        to {
-            opacity: 1;
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite, glow 2s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #ffd700;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            border-color: #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .mode-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        button:active {
             transform: translateY(0);
         }
-    }
 
-    .card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 30px;
-        margin: 20px 0;
-        border: 2px solid rgba(255, 215, 0, 0.3);
-        box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.2);
-        animation: fadeIn 1s ease-out;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    .mode-selector {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-
-    .mode-btn {
-        flex: 1;
-        padding: 15px;
-        border: none;
-        border-radius: 15px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: 2px solid rgba(255, 215, 0, 0.3);
-    }
-
-    .mode-btn.active {
-        background: linear-gradient(135deg, #ffd700, #ff6b6b);
-        border-color: #ffd700;
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    }
-
-    .mode-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-    }
-
-    select {
-        width: 100%;
-        padding: 15px;
-        margin: 10px 0;
-        border: 2px solid rgba(255, 215, 0, 0.3);
-        border-radius: 10px;
-        font-size: 1.1em;
-        background: rgba(255, 255, 255, 0.9);
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    select:focus {
-        outline: none;
-        border-color: #ffd700;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    }
-
-    input, button {
-        width: 100%;
-        padding: 15px;
-        margin: 10px 0;
-        border: 2px solid rgba(255, 215, 0, 0.3);
-        border-radius: 10px;
-        font-size: 1.1em;
-        background: rgba(255, 255, 255, 0.9);
-        transition: all 0.3s ease;
-    }
-
-    input:focus {
-        outline: none;
-        border-color: #ffd700;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    }
-
-    button {
-        background: linear-gradient(135deg, #ffd700, #ff6b6b);
-        color: white;
-        border: none;
-        font-weight: bold;
-        cursor: pointer;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-    }
-
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
-    }
-
-    button:active {
-        transform: translateY(0);
-    }
-
-    .participant-list {
-        margin-top: 20px;
-    }
-
-    .participant-item {
-        background: rgba(255, 255, 255, 0.15);
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        animation: slideIn 0.5s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(-50px);
+        .participant-list {
+            margin-top: 20px;
         }
-        to {
-            opacity: 1;
-            transform: translateX(0);
+
+        .participant-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.5s ease-out;
         }
-    }
 
-    .participant-name {
-        color: white;
-        font-size: 1.2em;
-        font-weight: bold;
-    }
-
-    .delete-btn {
-        background: linear-gradient(135deg, #ff6b6b, #c92a2a);
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9em;
-        width: auto;
-        margin: 0;
-    }
-
-    .reveal-container {
-        text-align: center;
-        padding: 40px 20px;
-    }
-
-    .gift-box {
-        font-size: 100px;
-        margin: 30px 0;
-        animation: bounce 2s infinite;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .gift-box:hover {
-        transform: scale(1.1) rotate(5deg);
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-
-    .reveal-text {
-        color: white;
-        font-size: 1.5em;
-        margin: 20px 0;
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-    }
-
-    .assignment {
-        background: linear-gradient(135deg, #ffd700, #ff6b6b);
-        padding: 30px;
-        border-radius: 15px;
-        margin: 30px 0;
-        animation: celebration 0.6s ease-out;
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-    }
-
-    @keyframes celebration {
-        0% {
-            transform: scale(0) rotate(-180deg);
-            opacity: 0;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        50% {
-            transform: scale(1.2) rotate(10deg);
+
+        .participant-name {
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
         }
-        100% {
-            transform: scale(1) rotate(0deg);
-            opacity: 1;
+
+        .delete-btn {
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            width: auto;
+            margin: 0;
         }
-    }
 
-    .assignment h2 {
-        font-size: 2em;
-        color: white;
-        margin-bottom: 20px;
-    }
-
-    .assignment-name {
-        font-size: 3em;
-        color: #1a0a2e;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
-    }
-
-    .info-text {
-        color: #ffd700;
-        font-size: 0.9em;
-        margin-top: 10px;
-        font-style: italic;
-    }
-
-    .shuffle-btn {
-        background: linear-gradient(135deg, #4ecdc4, #2193b0);
-        margin-top: 20px;
-    }
-
-    .error {
-        background: rgba(255, 107, 107, 0.2);
-        border: 2px solid #ff6b6b;
-        color: #ff6b6b;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 15px 0;
-        text-align: center;
-        font-weight: bold;
-        animation: shake 0.5s ease-in-out;
-    }
-
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px); }
-        75% { transform: translateX(10px); }
-    }
-
-    .success {
-        background: rgba(78, 205, 196, 0.2);
-        border: 2px solid #4ecdc4;
-        color: #4ecdc4;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 15px 0;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .confetti {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        top: -10px;
-        animation: confetti-fall 3s linear;
-        z-index: 1000;
-    }
-
-    @keyframes confetti-fall {
-        to {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0;
+        .reveal-container {
+            text-align: center;
+            padding: 40px 20px;
         }
-    }
 
-    .hidden {
-        display: none;
-    }
-</style>
-```
+        .gift-box {
+            font-size: 100px;
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .reveal-text {
+            color: white;
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .assignment {
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            animation: celebration 0.6s ease-out;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes celebration {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .assignment h2 {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .assignment-name {
+            font-size: 3em;
+            color: #1a0a2e;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .info-text {
+            color: #ffd700;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .shuffle-btn {
+            background: linear-gradient(135deg, #4ecdc4, #2193b0);
+            margin-top: 20px;
+        }
+
+        .error {
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .success {
+            background: rgba(78, 205, 196, 0.2);
+            border: 2px solid #4ecdc4;
+            color: #4ecdc4;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 3s linear;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .forced-assignments {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .forced-pair {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .forced-pair select {
+            flex: 1;
+            margin: 0;
+        }
+
+        .arrow {
+            color: #ffd700;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .remove-forced-btn {
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            width: auto;
+            margin: 0;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div id="snowflakes"></div>
-
-```
-<div class="container">
-    <div class="header">
-        <h1 onclick="secretClick()" style="cursor: pointer;">🎁 Secret Santa 🎅</h1>
-        <p>Where magic happens!</p>
-    </div>
-
-    <div class="card">
-
-        <!-- Participant Mode -->
-        <div id="participant-mode">
-            <h2 style="color: white; text-align: center; margin-bottom: 20px;">
-                Who Are You?
-            </h2>
-            <select 
-                id="participant-name"
-                onchange="if(this.value) findAssignment()"
-            >
-                <option value="">Choose your name...</option>
-            </select>
-            <div id="participant-result"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🎁 Secret Santa 🎅</h1>
+            <p>Where magic happens!</p>
         </div>
 
-        <!-- Admin Mode -->
-        <div id="admin-mode" class="hidden">
-            <h2 style="color: white; text-align: center; margin-bottom: 20px;">
-                🎅 Organizer Panel
-            </h2>
-            <input 
-                type="text" 
-                id="new-participant" 
-                placeholder="Add participant name..."
-                onkeypress="if(event.key==='Enter') addParticipant()"
-            />
-            <button onclick="addParticipant()">
-                ➕ Add Participant
-            </button>
-            
-            <div class="participant-list" id="participant-list"></div>
-            
-            <button class="shuffle-btn" onclick="shuffleAssignments()">
-                🎲 Shuffle & Assign Secret Santas
-            </button>
-            
-            <button onclick="switchMode('participant')" style="background: linear-gradient(135deg, #9b59b6, #8e44ad); margin-top: 10px;">
-                ← Back to Participant View
-            </button>
-            
-            <p class="info-text" style="color: white; text-align: center; margin-top: 20px;">
-                ℹ️ Don't worry! You won't see the assignments when you shuffle.
-                Only participants can see their own assignment by entering their name.
-            </p>
-        </div>
-    </div>
-</div>
+        <div class="card">
 
-<script>
-    // In-memory storage with localStorage persistence
-    let participants = [];
-    let assignments = {};
-    let currentMode = 'participant';
-    let secretClicks = 0;
-    let secretTimeout = null;
-
-    // Load data from localStorage on startup
-    function loadData() {
-        const savedParticipants = localStorage.getItem('secretSantaParticipants');
-        const savedAssignments = localStorage.getItem('secretSantaAssignments');
-        
-        if (savedParticipants) {
-            participants = JSON.parse(savedParticipants);
-        }
-        if (savedAssignments) {
-            assignments = JSON.parse(savedAssignments);
-        }
-        
-        updateParticipantDropdown();
-    }
-
-    // Save data to localStorage
-    function saveData() {
-        localStorage.setItem('secretSantaParticipants', JSON.stringify(participants));
-        localStorage.setItem('secretSantaAssignments', JSON.stringify(assignments));
-    }
-
-    // Secret admin access - click title 7 times
-    function secretClick() {
-        secretClicks++;
-        
-        if (secretTimeout) {
-            clearTimeout(secretTimeout);
-        }
-        
-        if (secretClicks >= 7) {
-            switchMode('admin');
-            secretClicks = 0;
-            showMessage('admin-mode', '🔓 Secret admin mode unlocked!', 'success');
-        } else {
-            // Reset counter after 2 seconds of no clicks
-            secretTimeout = setTimeout(() => {
-                secretClicks = 0;
-            }, 2000);
-        }
-    }
-
-    // Create snowflakes
-    function createSnowflakes() {
-        const container = document.getElementById('snowflakes');
-        for (let i = 0; i < 50; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.innerHTML = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
-            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            container.appendChild(snowflake);
-        }
-    }
-
-    function updateParticipantDropdown() {
-        const select = document.getElementById('participant-name');
-        select.innerHTML = '<option value="">Choose your name...</option>';
-        
-        participants.forEach(name => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = name;
-            select.appendChild(option);
-        });
-    }
-
-    function switchMode(mode) {
-        currentMode = mode;
-        const participantMode = document.getElementById('participant-mode');
-        const adminMode = document.getElementById('admin-mode');
-        
-        if (mode === 'participant') {
-            participantMode.classList.remove('hidden');
-            adminMode.classList.add('hidden');
-            updateParticipantDropdown();
-        } else {
-            participantMode.classList.add('hidden');
-            adminMode.classList.remove('hidden');
-            renderParticipants();
-        }
-    }
-
-    function addParticipant() {
-        const input = document.getElementById('new-participant');
-        const name = input.value.trim();
-        
-        if (!name) {
-            showMessage('participant-list', 'Please enter a name!', 'error');
-            return;
-        }
-        
-        if (participants.includes(name)) {
-            showMessage('participant-list', 'This participant already exists!', 'error');
-            return;
-        }
-        
-        participants.push(name);
-        input.value = '';
-        saveData();
-        renderParticipants();
-        updateParticipantDropdown();
-        showMessage('participant-list', `${name} added successfully!`, 'success');
-    }
-
-    function removeParticipant(name) {
-        participants = participants.filter(p => p !== name);
-        delete assignments[name];
-        saveData();
-        renderParticipants();
-        updateParticipantDropdown();
-    }
-
-    function renderParticipants() {
-        const list = document.getElementById('participant-list');
-        if (participants.length === 0) {
-            list.innerHTML = '<p style="color: white; text-align: center; padding: 20px;">No participants yet. Add some to get started!</p>';
-            return;
-        }
-        
-        list.innerHTML = participants.map(name => `
-            <div class="participant-item">
-                <span class="participant-name">🎄 ${name}</span>
-                <button class="delete-btn" onclick="removeParticipant('${name}')">Remove</button>
+            <!-- Participant Mode -->
+            <div id="participant-mode">
+                <h2 style="color: white; text-align: center; margin-bottom: 20px;">
+                    Who Are You?
+                </h2>
+                <select 
+                    id="participant-name"
+                    onchange="if(this.value) findAssignment()"
+                >
+                    <option value="">Choose your name...</option>
+                </select>
+                <div id="participant-result"></div>
             </div>
-        `).join('');
-    }
+        </div>
+    </div>
 
-    function shuffleArray(array) {
-        const shuffled = [...array];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        return shuffled;
-    }
+    <script>
+        // Data loaded from file
+        let participantIds = {};
+        let idToName = {};
+        let assignments = {};
+        let participantNames = [];
 
-    function shuffleAssignments() {
-        if (participants.length < 2) {
-            showMessage('participant-list', 'You need at least 2 participants!', 'error');
-            return;
-        }
-        
-        // Create a valid Secret Santa assignment
-        let receivers = shuffleArray(participants);
-        let isValid = false;
-        let attempts = 0;
-        
-        // Ensure no one gets themselves
-        while (!isValid && attempts < 100) {
-            isValid = true;
-            for (let i = 0; i < participants.length; i++) {
-                if (participants[i] === receivers[i]) {
-                    isValid = false;
-                    receivers = shuffleArray(participants);
-                    break;
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                participantIds = data.participants;
+                idToName = data.participants;
+                
+                // Decode assignments
+                assignments = {};
+                for (let giverId in data.assignments) {
+                    const giverName = participantIds[giverId];
+                    const receiverId = data.assignments[giverId];
+                    const receiverName = participantIds[receiverId];
+                    assignments[giverName] = receiverName;
                 }
+                
+                participantNames = Object.values(participantIds);
+                updateParticipantDropdown();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                alert('⚠️ Could not load Secret Santa data. Make sure data.json is in the same folder!');
             }
-            attempts++;
         }
-        
-        // Create assignments
-        assignments = {};
-        participants.forEach((giver, index) => {
-            assignments[giver] = receivers[index];
-        });
-        
-        saveData();
-        updateParticipantDropdown();
-        createConfetti();
-        showMessage('participant-list', '🎉 Assignments shuffled! Tell participants to check who they got!', 'success');
-    }
 
-    function findAssignment() {
-        const select = document.getElementById('participant-name');
-        const name = select.value;
-        const resultDiv = document.getElementById('participant-result');
-        
-        if (!name) {
-            resultDiv.innerHTML = '<div class="error">Please choose your name!</div>';
-            return;
+        // Create snowflakes
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakes');
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                container.appendChild(snowflake);
+            }
         }
-        
-        if (!participants.includes(name)) {
-            resultDiv.innerHTML = '<div class="error">You\'re not in the list! Contact the organizer.</div>';
-            return;
-        }
-        
-        if (!assignments[name]) {
-            resultDiv.innerHTML = '<div class="error">Assignments haven\'t been made yet! Contact the organizer.</div>';
-            return;
-        }
-        
-        // Fun reveal animation
-        resultDiv.innerHTML = `
-            <div class="reveal-container">
-                <div class="gift-box" onclick="revealAssignment('${name}')">🎁</div>
-                <div class="reveal-text">Click the gift to reveal!</div>
-            </div>
-        `;
-    }
 
-    function revealAssignment(giver) {
-        const receiver = assignments[giver];
-        const resultDiv = document.getElementById('participant-result');
-        
-        createConfetti();
-        
-        resultDiv.innerHTML = `
-            <div class="assignment">
-                <h2>You're giving a gift to:</h2>
-                <div class="assignment-name">🎅 ${receiver} 🎄</div>
-            </div>
-            <button onclick="clearAssignment()" style="background: linear-gradient(135deg, #4ecdc4, #2193b0);">
-                Clear & Check Again
-            </button>
-        `;
-    }
-
-    function clearAssignment() {
-        document.getElementById('participant-name').value = '';
-        document.getElementById('participant-result').innerHTML = '';
-    }
-
-    function createConfetti() {
-        const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#95e1d3', '#f38181'];
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDelay = Math.random() * 0.5 + 's';
-            document.body.appendChild(confetti);
+        function updateParticipantDropdown() {
+            const select = document.getElementById('participant-name');
+            select.innerHTML = '<option value="">Choose your name...</option>';
             
-            setTimeout(() => confetti.remove(), 3000);
+            participantNames.sort().forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                select.appendChild(option);
+            });
         }
-    }
 
-    function showMessage(afterElementId, message, type) {
-        const element = document.getElementById(afterElementId);
-        const messageDiv = document.createElement('div');
-        messageDiv.className = type;
-        messageDiv.textContent = message;
-        element.parentNode.insertBefore(messageDiv, element.nextSibling);
-        
-        setTimeout(() => messageDiv.remove(), 3000);
-    }
+        function findAssignment() {
+            const select = document.getElementById('participant-name');
+            const name = select.value;
+            const resultDiv = document.getElementById('participant-result');
+            
+            if (!name) {
+                resultDiv.innerHTML = '<div class="error">Please choose your name!</div>';
+                return;
+            }
+            
+            if (!assignments[name]) {
+                resultDiv.innerHTML = '<div class="error">Assignments haven\'t been made yet!</div>';
+                return;
+            }
+            
+            // Fun reveal animation
+            resultDiv.innerHTML = `
+                <div class="reveal-container">
+                    <div class="gift-box" onclick="revealAssignment('${name}')">🎁</div>
+                    <div class="reveal-text">Click the gift to reveal!</div>
+                </div>
+            `;
+        }
 
-    // Initialize
-    loadData();
-    createSnowflakes();
-    updateParticipantDropdown();
-</script>
+        function revealAssignment(giver) {
+            const receiver = assignments[giver];
+            const resultDiv = document.getElementById('participant-result');
+            
+            createConfetti();
+            
+            resultDiv.innerHTML = `
+                <div class="assignment">
+                    <h2>You're giving a gift to:</h2>
+                    <div class="assignment-name">🎅 ${receiver} 🎄</div>
+                </div>
+                <button onclick="clearAssignment()" style="background: linear-gradient(135deg, #4ecdc4, #2193b0);">
+                    Clear & Check Again
+                </button>
+            `;
+        }
 
+        function clearAssignment() {
+            document.getElementById('participant-name').value = '';
+            document.getElementById('participant-result').innerHTML = '';
+        }
+
+        function createConfetti() {
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#95e1d3', '#f38181'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // Initialize
+        loadData();
+        createSnowflakes();
+    </script>
 </body>
 </html>
